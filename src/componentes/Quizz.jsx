@@ -1,17 +1,29 @@
 import React from 'react'
+import Pregunta from './Pregunta'
 
-export default function Quizz() {
-  const [data, setData] = React.useState({})
+export default function Quizz(props) {
   
-  React.useEffect(function() {
-    fetch('https://opentdb.com/api.php?amount=5')
-    .then(res => res.json())
-    .then(preg => setData( oldData => oldData = {...preg} ))
-  }, [])
   
-  console.log(data)
+  const preguntas = props.data.results.map( pregunta => {
+    const respuestas = []
+    respuestas.push(pregunta.correct_answer)
+    const falsos = pregunta.incorrect_answers
+    falsos.forEach( res => respuestas.push(res) )
+    
+    
 
-  return (
-    <h1>Quizz</h1>
+    console.log(respuestas)
+    return (
+      <Pregunta 
+          pregunta={pregunta.question}
+      />
+      )
+    } )
+
+
+    return (
+      <div>
+        {preguntas}
+      </div>
   )
 }
