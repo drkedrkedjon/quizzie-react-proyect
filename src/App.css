@@ -37,3 +37,10 @@ body {
   border-radius: 7px;
   cursor: pointer;
 }
+.pregunta {
+  padding: 1rem;
+}
+.pregunta--respuestas {
+  display: flex;
+  gap: 2rem;
+}

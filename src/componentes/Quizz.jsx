@@ -19,7 +19,13 @@ export default function Quizz(props) {
     }
     console.log(respuestas);
 
-    return <Pregunta pregunta={pregunta.question} respuestas={respuestas} />;
+    return (
+      <Pregunta
+        key={pregunta.question}
+        pregunta={pregunta.question}
+        respuestas={respuestas}
+      />
+    );
   });
 
   return <div>{preguntas}</div>;
